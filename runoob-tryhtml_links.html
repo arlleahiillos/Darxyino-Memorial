@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darxyino 的电子纪念灵堂</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #bio {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        #profile-img {
+            width: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 30px;
+        }
+
+        #tribute-form {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        #tribute-form textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .tribute-btn {
+            background-color: #f0ad4e;
+            color: black;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .tribute-btn:hover {
+            background-color: #ec971f;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: gray;
+        }
+
+        #comments {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .comment {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .comment p {
+            font-size: 1em;
+            color: white;
+        }
+
+        .comment span {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 标题 -->
+    <div id="title">Darxyino 的电子纪念灵堂</div>
+
+    <!-- Darxyino的头像 -->
+    <img src="https://opgg-static.akamaized.net/meta/images/profile_icons/profileIcon6467.jpg?image=e_upscale,q_auto:good,f_webp,w_auto&v=1729058249" alt="Darxyino" id="profile-img">
+
+    <!-- Darxyino的简介 -->
+    <div id="bio">
+        Darxyino 是一位充满理解力与幽默感的玩家。他在游戏中总能随机应变，或c或混或摆，并且总是愿意为队友带来情绪价值价值，喜欢逗大家笑。希望他能在下一个回合更完满。
+    </div>
+
+    <!-- 致辞区域 -->
+    <div id="tribute-form">
+        <h3>给 Darxyino 送上你的致辞</h3>
+        <textarea id="tribute-message" placeholder="写下你对 Darxyino 的纪念..."></textarea><br>
+        <button class="tribute-btn" onclick="submitTribute()">提交致辞</button>
+    </div>
+
+    <!-- 留言区域 -->
+    <div id="comments">
+        <h4>来自朋友们的留言：</h4>
+        <div id="comment-list"></div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>感谢你参与纪念 Darxyino，他的精神将永远与我们同在。</p>
+    </div>
+</div>
+
+<script>
+    
+    // 显示留言
+    function displayComments() {
+        const commentList = document.getElementById("comment-list");
+        commentList.innerHTML = "";
+        comments.forEach(comment => {
+            const commentElement = document.createElement("div");
+            commentElement.classList.add("comment");
+            commentElement.innerHTML = `<p><strong>${comment.name}:</strong> ${comment.message}</p><span>刚刚</span>`;
+            commentList.appendChild(commentElement);
+        });
+    }
+
+    // 提交致辞
+    function submitTribute() {
+        const message = document.getElementById("tribute-message").value;
+        if (message) {
+            // 添加留言
+            comments.push({ name: "匿名", message });
+            displayComments();
+            // 清空留言框
+            document.getElementById("tribute-message").value = "";
+        } else {
+            alert("请填写致辞内容！");
+        }
+    }
+
+    // 初始化留言显示
+    displayComments();
+</script>
+
+</body>
+</html>
